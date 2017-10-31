@@ -81,8 +81,7 @@ namespace Kartenspiel
             {
                 Console.Error.WriteLine(e.Message);
             }
-            return null;         
-            
+            return null;                 
         }
     }
 
@@ -95,7 +94,7 @@ namespace Kartenspiel
             _model = model;
         }
 
-        public void writeCardDate()
+        public void WriteCardDate()
         {
             Console.Clear();
             Console.WriteLine("Kartenname: {0} und Kartenwert: {1}", _model.Name, _model.Zahl);
@@ -143,7 +142,7 @@ namespace Kartenspiel
 
         public void updateView()
         {
-            _view.writeCardDate();
+            _view.WriteCardDate();
         }
     }
 
