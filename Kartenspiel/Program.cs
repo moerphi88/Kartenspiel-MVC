@@ -13,9 +13,12 @@ namespace Kartenspiel
             Card c = new Card();
             CardView cv = new CardView(c);
 
+            Player p = new Player();
+            p.ShowHand();
+
             CardController cc = new CardController(c, cv);
 
-            cc.startGame();
+            //cc.startGame();
 
             Console.Read();
         }
@@ -51,6 +54,12 @@ namespace Kartenspiel
             Name = name;
             Zahl = zahl;
          }
+
+        public override string ToString()
+        {
+            return Name + " " + Zahl;
+        }
+
 
     }
 
@@ -145,5 +154,58 @@ namespace Kartenspiel
             _view.WriteCardDate();
         }
     }
+
+    public class Player
+    {
+        private Card c1, c2;
+        private string _name;
+
+        public Player()
+        {
+            c1 = new Kartenspiel.Card("Herz","As");
+            c2 = new Kartenspiel.Card("Herz","Zehn");
+            _name = "Spieler X";
+        }
+
+        // Mit dieser Funktion soll herausgefunden werden, ob der Nutzer gewonnen hat (D.h. ob er zwei Asse auf der Hand hat)
+        public bool IsWinner()
+        {
+            if (c1.Zahl == c2.Zahl)
+                if (c1.Zahl == "As")
+                    return true;
+            return false; //Wenn keine der Abfragen wahr ist
+        }
+
+        // Diese Funktion wird benutzt, wenn der nutzer eine neue Karte ziehen soll. Nachdem er eine karte abgelegt hat.
+        public void DrawCard(int playerNo, Card c)
+        {
+            switch (playerNo)
+            {
+                case 1:
+                    c1 = c;
+                    break;
+                case 2:
+                    c2 = c;
+                    break;
+                default:
+                    Console.Error.WriteLine("Dieser Fall sollte nicht eintreten");
+                break;
+            }
+        }
+
+        //Diese Funktion soll benutzt werden, wenn der nutzer sich entschieden hat welche karte er ablegen möchte.
+        public Card DropCard(int cardNo)
+        {
+            return new Kartenspiel.Card(); 
+        }
+
+        public void ShowHand()
+        {
+            Console.WriteLine("{0} deine Hand:",_name);
+            Console.WriteLine("Karte 1: {0}", c1.ToString());
+            Console.WriteLine("Karte 2: {0}", c2.ToString());
+        }
+    }
+
 
 }
