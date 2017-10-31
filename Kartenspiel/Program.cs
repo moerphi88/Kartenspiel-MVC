@@ -64,14 +64,42 @@ namespace Kartenspiel
     public class CardDeck
     {
         List<Card> list;
+        Random random = new Random();
+
+        private void InitCardDeck()
+        {
+            foreach(var value in Enum.GetNames(typeof(Farbe)))
+                {
+                foreach (var value2 in Enum.GetNames(typeof(Wert)))
+                {
+                    list.Add(new Card(value, value2));
+                }
+            }
+        }
+
+        private void ShuffleCardDeck()
+        {
+            List<Card> tempList = new List<Card>();
+
+            for(int i = 0; i < list.Count; i++)
+            {
+                var ran = random.Next(31);
+                tempList.Add(list.ElementAt(ran));
+            }
+            list = tempList;
+        }
 
         public CardDeck()
         {
             list = new List<Card>();
-            list.Add(new Card("Herz", "Zehn"));
-            list.Add(new Card("Herz", "As"));
-            list.Add(new Card("Kreuz", "Acht"));
-            list.Add(new Card("Karo", "Sieben"));
+            InitCardDeck();
+            ShuffleCardDeck();
+        }
+
+        public bool isEmpty()
+        {
+            if (list.Count <= 1) return true; //Wenn nur noch eine Karte im Deck übrig ist, kann keine ganze runde mehr gespielt werden. Darum <= 1 und nicht nur 0.
+            else return false;
         }
 
         public Card GetFirstCard()
@@ -115,7 +143,10 @@ namespace Kartenspiel
 
         public void AnnounceWinner()
         {
-            Console.WriteLine("Spieler {0} hat das Spiel gewonnen", _model.Winner);
+            if(_model.Winner == 0)
+                Console.WriteLine("Es gibt keinen Gewinner!");
+            else
+                Console.WriteLine("Spieler {0} hat das Spiel gewonnen", _model.Winner);
         }
 
 
@@ -294,6 +325,10 @@ namespace Kartenspiel
 
         public bool isGameOver()
         {
+            if (cd.isEmpty())
+            {
+                return true;
+            }
             if (p1.IsWinner())
             {
                 winner = 1;
