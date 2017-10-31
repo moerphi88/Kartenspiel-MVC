@@ -80,13 +80,24 @@ namespace Kartenspiel
         public void ShuffleCardDeck()
         {
             List<Card> tempList = new List<Card>();
+            tempList.AddRange(list);
 
-            for(int i = 0; i < list.Count; i++)
+            foreach(var c in tempList)
+            {
+                var ran = random.Next(31);
+                Card temp = list.ElementAt(ran);
+                int idx = list.IndexOf(c);
+                list.Remove(c);
+                list.Insert(idx, temp);
+                list.RemoveAt(ran);
+                list.Insert(ran, c);
+            }
+            /*for(int i = 0; i < list.Count; i++)
             {
                 var ran = random.Next(31);
                 tempList.Add(list.ElementAt(ran));
-            }
-            list = tempList;
+            }*/
+            //list = tempList;
         }
 
         public CardDeck()
@@ -144,10 +155,11 @@ namespace Kartenspiel
 
         public void AnnounceWinner()
         {
+            Console.Clear();
             if(_model.Winner == 0)
                 Console.WriteLine("Es gibt keinen Gewinner!");
             else
-                Console.WriteLine("Spieler {0} hat das Spiel gewonnen", _model.Winner);
+                Console.WriteLine("Spieler {0} hat das Spiel in Runde {1} gewonnen", _model.Winner, _model.Round);
         }
 
 
