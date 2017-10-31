@@ -13,8 +13,6 @@ namespace Kartenspiel
             Card c = new Card();
             CardView cv = new CardView(c);
 
-            Player p = new Player();
-            p.ShowHand();
 
             CardController cc = new CardController(c, cv);
 
@@ -24,8 +22,8 @@ namespace Kartenspiel
         }
     }
 
-    enum Farbe { Herz, Karo, Pik, Kreuz};
-    enum Wert { Sieben, Acht, Neun, Zehn, Bauer, Dame, Koenig, As};
+    enum Farbe { Herz, Karo, Pik, Kreuz };
+    enum Wert { Sieben, Acht, Neun, Zehn, Bauer, Dame, Koenig, As };
 
     public class Card
     {
@@ -45,15 +43,15 @@ namespace Kartenspiel
             set { _zahl = value; }
         }
 
-        public Card(){
+        public Card() {
             Name = Farbe.Herz.ToString();
             Zahl = Wert.Acht.ToString();
         }
 
-        public Card(string name, string zahl){
+        public Card(string name, string zahl) {
             Name = name;
             Zahl = zahl;
-         }
+        }
 
         public override string ToString()
         {
@@ -86,11 +84,11 @@ namespace Kartenspiel
                 list.RemoveAt(0);
                 return c;
 
-            }catch(Exception e)
+            } catch (Exception e)
             {
                 Console.Error.WriteLine(e.Message);
             }
-            return null;                 
+            return null;
         }
     }
 
@@ -111,7 +109,7 @@ namespace Kartenspiel
 
     }
 
-    public class CardController { 
+    public class CardController {
         private Card _model;
         private CardView _view;
 
@@ -162,8 +160,8 @@ namespace Kartenspiel
 
         public Player()
         {
-            c1 = new Kartenspiel.Card("Herz","As");
-            c2 = new Kartenspiel.Card("Herz","Zehn");
+            c1 = new Kartenspiel.Card("Herz", "As");
+            c2 = new Kartenspiel.Card("Herz", "Zehn");
             _name = "Spieler X";
         }
 
@@ -189,22 +187,44 @@ namespace Kartenspiel
                     break;
                 default:
                     Console.Error.WriteLine("Dieser Fall sollte nicht eintreten");
-                break;
+                    break;
             }
         }
 
         //Diese Funktion soll benutzt werden, wenn der nutzer sich entschieden hat welche karte er ablegen möchte.
         public Card DropCard(int cardNo)
         {
-            return new Kartenspiel.Card(); 
+            return new Kartenspiel.Card();
         }
 
         public void ShowHand()
         {
-            Console.WriteLine("{0} deine Hand:",_name);
+            Console.WriteLine("{0} deine Hand:", _name);
             Console.WriteLine("Karte 1: {0}", c1.ToString());
             Console.WriteLine("Karte 2: {0}", c2.ToString());
         }
+    }
+
+    public class GameModel{
+
+        private Player p1, p2;
+        private CardDeck cd;
+
+        public void ShowPlayersHand(int playerNo)
+        {
+            switch (playerNo)
+            {
+                case 1:
+                    p1.ShowHand();
+                    break;
+                case 2:
+                    p1.ShowHand();
+                    break;
+                default:
+                    break;
+            }
+        }
+
     }
 
 
