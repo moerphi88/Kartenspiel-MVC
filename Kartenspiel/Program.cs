@@ -77,7 +77,7 @@ namespace Kartenspiel
             }
         }
 
-        private void ShuffleCardDeck()
+        public void ShuffleCardDeck()
         {
             List<Card> tempList = new List<Card>();
 
