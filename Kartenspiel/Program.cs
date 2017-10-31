@@ -13,10 +13,9 @@ namespace Kartenspiel
             GameModel gm = new GameModel();
             GameView gv = new GameView(gm);
 
+            GameController gc = new GameController(gm, gv);
 
-            GameController cc = new GameController(gm, gv);
-
-            cc.startGame();
+            gc.startGame();
 
             Console.Read();
         }
@@ -69,7 +68,7 @@ namespace Kartenspiel
         public CardDeck()
         {
             list = new List<Card>();
-            list.Add(new Card("Pik", "Neun"));
+            list.Add(new Card("Herz", "Zehn"));
             list.Add(new Card("Herz", "As"));
             list.Add(new Card("Kreuz", "Acht"));
             list.Add(new Card("Karo", "Sieben"));
@@ -104,26 +103,21 @@ namespace Kartenspiel
         public void WriteGame()
         {
             //Console.Clear();
+            Console.WriteLine("Runde {0}", _model.Round);            
             _model.ShowPlayersHand();
         }
 
-
-    }
-
-    public class CardView
-    {
-        Card _model;
-
-        public CardView(Card model)
+        public string GetUserInput()
         {
-            _model = model;
+            Console.WriteLine("Spieler {0} Welche Karte möchtest du ablegen?",_model.ActivePlayer);
+            return Console.ReadLine(); // Hier muss noch die Logik rein, dass nur gültige Werte eingegeben werden können.
         }
 
-        public void WriteCardDate()
+        public void AnnounceWinner()
         {
-            Console.Clear();
-            Console.WriteLine("Kartenname: {0} und Kartenwert: {1}", _model.Name, _model.Zahl);
+            Console.WriteLine("Spieler {0} hat das Spiel gewonnen", _model.Winner);
         }
+
 
     }
 
@@ -140,24 +134,29 @@ namespace Kartenspiel
         // Hier hatte das Beispiele ein paar Get und Set Methoden um direkt auf die Props von Card zuzugreifen
         public void startGame()
         {
+            int selectedHandCard = 0;
             try
             {
-                do{
-                    _model.ActivePlayer = 1;
+                bool temp = false;
+                do
+                {
                     updateView();
-                    _model.ActivePlayer = 2;
+                    selectedHandCard = Convert.ToInt32(_view.GetUserInput());
+                    _model.PlayerMakesMove(selectedHandCard);
+                    _model.ToggleActivePlayer();
                     updateView();
-                } while (!isWinner());
+                    selectedHandCard = Convert.ToInt32(_view.GetUserInput());
+                    _model.PlayerMakesMove(selectedHandCard);
+                    _model.ToggleActivePlayer();
+                    //temp = temp ? false : true;
+                    _model.Round++;
+                } while (!_model.isGameOver());
+                _view.AnnounceWinner();
             }
             catch (Exception e)
             {
                 Console.Error.WriteLine(e.Message);
             }
-        }
-
-        private bool isWinner()
-        {
-            return true;
         }
 
         public void updateView()
@@ -188,34 +187,37 @@ namespace Kartenspiel
         }
 
         // Diese Funktion wird benutzt, wenn der nutzer eine neue Karte ziehen soll. Nachdem er eine karte abgelegt hat.
-        public void DrawCard(int playerNo, Card c)
+        public Card MakeMove(int cardNo, Card c)
         {
-            switch (playerNo)
+            Card temp;
+            // __cardNo__ gibt an welche der beiden hand Karten getauscht werden soll. Muss das nicht eigentlich vom Controller kommen?
+            switch (cardNo)
             {
                 case 1:
+                    temp = c1;
                     c1 = c;
                     break;
                 case 2:
+                    temp = c2;
                     c2 = c;
                     break;
                 default:
+                    temp = null;
                     Console.Error.WriteLine("Dieser Fall sollte nicht eintreten");
-                    break;
+                break;
             }
+
+            return temp;
         }
 
-        //Diese Funktion soll benutzt werden, wenn der nutzer sich entschieden hat welche karte er ablegen möchte.
-        public Card DropCard(int cardNo)
-        {
-            return new Kartenspiel.Card();
-        }
-
+        //ToDo
         public void ShowHand()
         {
             Console.WriteLine("{0} deine Hand:", _name);
             Console.WriteLine("Karte 1: {0}", c1.ToString());
             Console.WriteLine("Karte 2: {0}", c2.ToString());
         }
+
     }
 
     public class GameModel{
@@ -223,20 +225,43 @@ namespace Kartenspiel
         private Player p1, p2;
         private CardDeck cd;
         private int activePlayer;
+        private Card lastDroppedCard;
+        private int round;
+        private int winner;
+
+        public int Winner
+        {
+            get { return winner; }
+            set { winner = value; }
+        }
+
+        public int Round
+        {
+            get { return round; }
+            set { round = value; }
+        }
 
         public GameModel()
         {
             p1 = new Player("Spieler 1");
             p2 = new Player("Spieler 2");
             cd = new CardDeck();
+            activePlayer = 1;
+            lastDroppedCard = null;
+            round = 0;
         }
 
+        // ToDo  Brauch ich diese noch? Wenn ich den aktiven Spieler eh über Toggle wechsel?
         public int ActivePlayer
         {
             get { return activePlayer; }
             set { activePlayer = value; }
         }
 
+        public void ToggleActivePlayer()
+        {
+            activePlayer = (activePlayer == 1) ? 2 : 1;
+        }
 
         public void ShowPlayersHand()
         {
@@ -253,6 +278,34 @@ namespace Kartenspiel
             }
         }
 
+        // Nachdem der nutzer eine Karte zum ablegen gewählt hat, wird diese Karte abgelegt und eine neue Karte wird vom Stapel auf die Hand genommen.
+        public void PlayerMakesMove(int usersChoiceHandCard)
+        {
+            switch (activePlayer)
+            {
+                case 1:
+                    lastDroppedCard = p1.MakeMove(usersChoiceHandCard,cd.GetFirstCard());
+                    break;
+                case 2:
+                    lastDroppedCard = p2.MakeMove(usersChoiceHandCard, cd.GetFirstCard());
+                    break;
+            }
+        }
+
+        public bool isGameOver()
+        {
+            if (p1.IsWinner())
+            {
+                winner = 1;
+                return true;
+            }
+            else if (p2.IsWinner())
+            {
+                winner = 2;
+                return true;
+            }
+            else return false;
+        }
     }
 
 
