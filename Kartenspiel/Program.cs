@@ -128,7 +128,7 @@ namespace Kartenspiel
             _model = model;
         }
 
-        public void WriteGame()
+        public void ÚpdateView()
         {
             Console.Clear();
             Console.WriteLine("Runde {0}", _model.Round);
@@ -191,7 +191,7 @@ namespace Kartenspiel
 
         public void updateView()
         {
-            _view.WriteGame();
+            _view.ÚpdateView();
         }
     }
 
