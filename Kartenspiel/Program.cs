@@ -10,13 +10,13 @@ namespace Kartenspiel
     {
         static void Main(string[] args)
         {
-            Card c = new Card();
-            CardView cv = new CardView(c);
+            GameModel gm = new GameModel();
+            GameView gv = new GameView(gm);
 
 
-            CardController cc = new CardController(c, cv);
+            CardController cc = new CardController(gm, gv);
 
-            //cc.startGame();
+            cc.startGame();
 
             Console.Read();
         }
@@ -92,6 +92,24 @@ namespace Kartenspiel
         }
     }
 
+    public class GameView
+    {
+        GameModel _model;
+
+        public GameView(GameModel model)
+        {
+            _model = model;
+        }
+
+        public void WriteGame()
+        {
+            //Console.Clear();
+            _model.ShowPlayersHand();
+        }
+
+
+    }
+
     public class CardView
     {
         Card _model;
@@ -110,10 +128,10 @@ namespace Kartenspiel
     }
 
     public class CardController {
-        private Card _model;
-        private CardView _view;
+        private GameModel _model;
+        private GameView _view;
 
-        public CardController(Card model, CardView view)
+        public CardController(GameModel model, GameView view)
         {
             _model = model;
             _view = view;
@@ -124,13 +142,11 @@ namespace Kartenspiel
         {
             try
             {
-                do
-                {
+                do{
+                    _model.ActivePlayer = 1;
                     updateView();
-                    Console.WriteLine("Geben Sie einen Name ein:");
-                    _model.Name = Console.ReadLine();
-                    Console.WriteLine("Geben Sie einen Wert ein:");
-                    _model.Zahl = Console.ReadLine();
+                    _model.ActivePlayer = 2;
+                    updateView();
                 } while (!isWinner());
             }
             catch (Exception e)
@@ -141,15 +157,12 @@ namespace Kartenspiel
 
         private bool isWinner()
         {
-            if (_model.Zahl == Wert.Neun.ToString())
-                return true;
-            else
-                return false;
+            return true;
         }
 
         public void updateView()
         {
-            _view.WriteCardDate();
+            _view.WriteGame();
         }
     }
 
@@ -158,11 +171,11 @@ namespace Kartenspiel
         private Card c1, c2;
         private string _name;
 
-        public Player()
+        public Player(string name)
         {
             c1 = new Kartenspiel.Card("Herz", "As");
             c2 = new Kartenspiel.Card("Herz", "Zehn");
-            _name = "Spieler X";
+            _name = name;
         }
 
         // Mit dieser Funktion soll herausgefunden werden, ob der Nutzer gewonnen hat (D.h. ob er zwei Asse auf der Hand hat)
@@ -209,16 +222,31 @@ namespace Kartenspiel
 
         private Player p1, p2;
         private CardDeck cd;
+        private int activePlayer;
 
-        public void ShowPlayersHand(int playerNo)
+        public GameModel()
         {
-            switch (playerNo)
+            p1 = new Player("Spieler 1");
+            p2 = new Player("Spieler 2");
+            cd = new CardDeck();
+        }
+
+        public int ActivePlayer
+        {
+            get { return activePlayer; }
+            set { activePlayer = value; }
+        }
+
+
+        public void ShowPlayersHand()
+        {
+            switch (activePlayer)
             {
                 case 1:
                     p1.ShowHand();
                     break;
                 case 2:
-                    p1.ShowHand();
+                    p2.ShowHand();
                     break;
                 default:
                     break;
