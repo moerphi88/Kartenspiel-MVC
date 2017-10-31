@@ -168,7 +168,6 @@ namespace Kartenspiel
             int selectedHandCard = 0;
             try
             {
-                bool temp = false;
                 do
                 {
                     updateView();
@@ -201,10 +200,10 @@ namespace Kartenspiel
         private Card c1, c2;
         private string _name;
 
-        public Player(string name)
+        public Player(string name, Card _c1, Card _c2)
         {
-            c1 = new Kartenspiel.Card("Herz", "As");
-            c2 = new Kartenspiel.Card("Herz", "Zehn");
+            c1 = _c1;
+            c2 = _c2;
             _name = name;
         }
 
@@ -221,7 +220,7 @@ namespace Kartenspiel
         public Card MakeMove(int cardNo, Card c)
         {
             Card temp;
-            // __cardNo__ gibt an welche der beiden hand Karten getauscht werden soll. Muss das nicht eigentlich vom Controller kommen?
+
             switch (cardNo)
             {
                 case 1:
@@ -256,7 +255,7 @@ namespace Kartenspiel
         private Player p1, p2;
         private CardDeck cd;
         private int activePlayer;
-        private Card lastDroppedCard;
+        private Card lastDroppedCard; //Wird auch noch garnicht verwendet!
         private int round;
         private int winner;
 
@@ -274,9 +273,9 @@ namespace Kartenspiel
 
         public GameModel()
         {
-            p1 = new Player("Spieler 1");
-            p2 = new Player("Spieler 2");
             cd = new CardDeck();
+            p1 = new Player("Spieler 1",cd.GetFirstCard(),cd.GetFirstCard());
+            p2 = new Player("Spieler 2",cd.GetFirstCard(),cd.GetFirstCard());            
             activePlayer = 1;
             lastDroppedCard = null;
             round = 0;
