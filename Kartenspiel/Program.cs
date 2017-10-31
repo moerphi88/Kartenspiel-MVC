@@ -130,9 +130,9 @@ namespace Kartenspiel
 
         public void WriteGame()
         {
-            //Console.Clear();
-            Console.WriteLine("Runde {0}", _model.Round);            
-            _model.ShowPlayersHand();
+            Console.Clear();
+            Console.WriteLine("Runde {0}", _model.Round);
+            Console.WriteLine(_model.ShowPlayersHand());
         }
 
         public string GetUserInput()
@@ -241,11 +241,9 @@ namespace Kartenspiel
         }
 
         //ToDo
-        public void ShowHand()
+        public string ShowHand()
         {
-            Console.WriteLine("{0} deine Hand:", _name);
-            Console.WriteLine("Karte 1: {0}", c1.ToString());
-            Console.WriteLine("Karte 2: {0}", c2.ToString());
+           return _name + " deine Hand:" + "\n" + "Karte 1: " +c1.ToString() + "\n Karte 2: " + c2.ToString() +"\n";
         }
 
     }
@@ -293,18 +291,16 @@ namespace Kartenspiel
             activePlayer = (activePlayer == 1) ? 2 : 1;
         }
 
-        public void ShowPlayersHand()
+        public string ShowPlayersHand()
         {
             switch (activePlayer)
             {
                 case 1:
-                    p1.ShowHand();
-                    break;
+                    return p1.ShowHand();
                 case 2:
-                    p2.ShowHand();
-                    break;
+                    return p2.ShowHand();
                 default:
-                    break;
+                    return String.Empty;
             }
         }
 
