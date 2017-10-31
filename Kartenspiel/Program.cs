@@ -131,6 +131,7 @@ namespace Kartenspiel
         public void ÚpdateView()
         {
             Console.Clear();
+            if (null != _model.LastDroppedCard) Console.WriteLine("Auf dem Ablagestapel liegt {0}", _model.LastDroppedCard);
             Console.WriteLine("Runde {0}", _model.Round);
             Console.WriteLine(_model.ShowPlayersHand());
         }
@@ -243,7 +244,7 @@ namespace Kartenspiel
         //ToDo
         public string ShowHand()
         {
-           return _name + " deine Hand:" + "\n" + "Karte 1: " +c1.ToString() + "\n Karte 2: " + c2.ToString() +"\n";
+           return _name + " deine Hand:" + "\n" + "Karte 1: " +c1.ToString() + "\nKarte 2: " + c2.ToString() +"\n";
         }
 
     }
@@ -257,6 +258,11 @@ namespace Kartenspiel
         private int round;
         private int winner;
 
+        public Card LastDroppedCard
+        {
+            get { return lastDroppedCard; }
+            set { lastDroppedCard = value; }
+        }
         public int Winner
         {
             get { return winner; }
