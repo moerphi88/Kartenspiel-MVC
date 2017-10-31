@@ -14,7 +14,7 @@ namespace Kartenspiel
             GameView gv = new GameView(gm);
 
 
-            CardController cc = new CardController(gm, gv);
+            GameController cc = new GameController(gm, gv);
 
             cc.startGame();
 
@@ -127,11 +127,11 @@ namespace Kartenspiel
 
     }
 
-    public class CardController {
+    public class GameController {
         private GameModel _model;
         private GameView _view;
 
-        public CardController(GameModel model, GameView view)
+        public GameController(GameModel model, GameView view)
         {
             _model = model;
             _view = view;
