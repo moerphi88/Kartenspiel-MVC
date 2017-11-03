@@ -56,8 +56,6 @@ namespace Kartenspiel
         {
             return Name + " " + Zahl;
         }
-
-
     }
 
     // Test eines Kartenstapels. Wie genau kann ich denn nu eigentlich einzelne Elemten in der Liste verändern?
@@ -80,7 +78,7 @@ namespace Kartenspiel
         public void ShuffleCardDeck()
         {
             List<Card> tempList = new List<Card>();
-            tempList.AddRange(list);
+            tempList.AddRange(list); 
 
             foreach(var c in tempList)
             {
@@ -92,12 +90,6 @@ namespace Kartenspiel
                 list.RemoveAt(ran);
                 list.Insert(ran, c);
             }
-            /*for(int i = 0; i < list.Count; i++)
-            {
-                var ran = random.Next(31);
-                tempList.Add(list.ElementAt(ran));
-            }*/
-            //list = tempList;
         }
 
         public CardDeck()
@@ -266,7 +258,7 @@ namespace Kartenspiel
         private Player p1, p2;
         private CardDeck cd;
         private int activePlayer;
-        private Card lastDroppedCard; //Wird auch noch garnicht verwendet!
+        private Card lastDroppedCard;
         private int round;
         private int winner;
 
