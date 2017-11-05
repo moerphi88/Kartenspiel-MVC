@@ -14,7 +14,15 @@ namespace Kartenspiel.Tests
         [TestMethod()]
         public void ShuffleCardDeckTest()
         {
-            Assert.Fail();
+            //Hier brauche ich eine Funktion, die kontrolliert, ob ich jede Karte einmal habe
+            CardDeck cd1 = new CardDeck(0);
+            CardDeck cd2 = new CardDeck(1);
+
+            foreach(var c in cd1.list)
+            {
+                if (cd2.list.IndexOf(c) != -1)
+                    Assert.AreSame(c, cd2.list.IndexOf(c));
+            }       
         }
 
         [TestMethod()]

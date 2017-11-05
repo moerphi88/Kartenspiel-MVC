@@ -61,7 +61,7 @@ namespace Kartenspiel
     // Test eines Kartenstapels. Wie genau kann ich denn nu eigentlich einzelne Elemten in der Liste verändern?
     public class CardDeck
     {
-        List<Card> list;
+        public List<Card> list;
         Random random = new Random();
 
         private void InitCardDeck()
@@ -88,8 +88,9 @@ namespace Kartenspiel
                 list.Remove(c);
                 list.Insert(idx, temp);
                 list.RemoveAt(ran);
-                list.Insert(ran, c);
+                list.Insert(ran, c);                
             }
+            list.RemoveAt(4);
         }
 
         public CardDeck()
@@ -99,6 +100,13 @@ namespace Kartenspiel
             ShuffleCardDeck();
         }
 
+        //Wird für den Test gebraucht
+        public CardDeck(int i)
+        {
+            list = new List<Card>();
+            InitCardDeck();
+            if (i == 1) ShuffleCardDeck();        
+        }
         public bool isEmpty()
         {
             if (list.Count <= 1) return true; //Wenn nur noch eine Karte im Deck übrig ist, kann keine ganze runde mehr gespielt werden. Darum <= 1 und nicht nur 0.
