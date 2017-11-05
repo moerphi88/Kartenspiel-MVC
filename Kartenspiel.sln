@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kartenspiel", "Kartenspiel\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KartenspielTests", "KartenspielTests\KartenspielTests.csproj", "{3C61DDB1-D589-4556-BB1E-BE295ABD434D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KartenspielWPF", "KartenspielWPF\KartenspielWPF.csproj", "{5F1A0F16-86B1-4DC8-B63D-90D4E2A229BB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{3C61DDB1-D589-4556-BB1E-BE295ABD434D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C61DDB1-D589-4556-BB1E-BE295ABD434D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C61DDB1-D589-4556-BB1E-BE295ABD434D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F1A0F16-86B1-4DC8-B63D-90D4E2A229BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F1A0F16-86B1-4DC8-B63D-90D4E2A229BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F1A0F16-86B1-4DC8-B63D-90D4E2A229BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F1A0F16-86B1-4DC8-B63D-90D4E2A229BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
