@@ -19,14 +19,10 @@ namespace KartenspielWPF
             Application.SetCompatibleTextRenderingDefault(false);
 
             Kartenspiel.GameModel gm = new Kartenspiel.GameModel();
-            Kartenspiel.GameView gv = new Kartenspiel.GameView(gm);
-            Form1 view = new Form1();
-        // Form1 kann ich natürlich nicht an den Controller übergeben. Hierfür muss ich erst ein Interface anlegen. Davon müssen GameView und Form1 das Interface extenden.
-            Kartenspiel.GameController gc = new Kartenspiel.GameController(gm, gv);
-
+            Form1 view = new Form1(gm);
+            Kartenspiel.GameController gc = new Kartenspiel.GameController(gm, view);
+            gc.StartGame();
             Application.Run(view);
-
-
         }
     }
 }

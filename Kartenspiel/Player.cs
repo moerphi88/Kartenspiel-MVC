@@ -51,7 +51,7 @@ namespace Kartenspiel
         //ToDo
         public string ShowHand()
         {
-           return _name + " deine Hand:" + "\n" + "Karte 1: " +c1.ToString() + "\nKarte 2: " + c2.ToString() +"\n";
+           return _name + " deine Hand:" + System.Environment.NewLine + "Karte 1: " +c1.ToString() + System.Environment.NewLine + "Karte 2: " + c2.ToString() + System.Environment.NewLine;
         }
 
     }
