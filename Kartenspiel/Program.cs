@@ -11,7 +11,7 @@ namespace Kartenspiel
 
             GameController gc = new GameController(gm, gv);
 
-            gc.startGame();
+            gc.StartGame();
 
             Console.Read();
         }

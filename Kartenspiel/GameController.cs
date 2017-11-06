@@ -5,16 +5,16 @@ namespace Kartenspiel
 
     public class GameController {
         private GameModel _model;
-        private GameView _view;
+        private IGameView _view;
 
-        public GameController(GameModel model, GameView view)
+        public GameController(GameModel model, IGameView view)
         {
             _model = model;
             _view = view;
         }
 
         // Hier hatte das Beispiele ein paar Get und Set Methoden um direkt auf die Props von Card zuzugreifen
-        public void startGame()
+        public void StartGame()
         {
             int selectedHandCard = 0;
             try

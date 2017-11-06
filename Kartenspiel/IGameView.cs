@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Kartenspiel
 {
-    interface IGameView
+    public interface IGameView
     {
         void UpdateView();
 
