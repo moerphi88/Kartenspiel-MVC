@@ -21,18 +21,18 @@ namespace Kartenspiel
             {
                 do
                 {
-                    updateView();
+                    UpdateView();
                     selectedHandCard = Convert.ToInt32(_view.GetUserInput());
                     _model.PlayerMakesMove(selectedHandCard);
                     _model.ToggleActivePlayer();
-                    updateView();
+                    UpdateView();
                     selectedHandCard = Convert.ToInt32(_view.GetUserInput());
                     _model.PlayerMakesMove(selectedHandCard);
                     _model.ToggleActivePlayer();
                     //temp = temp ? false : true;
                     _model.Round++;
                 } while (!_model.isGameOver());
-                _view.AnnounceWinner();
+                _view.AccounceWinner();
             }
             catch (Exception e)
             {
@@ -40,9 +40,9 @@ namespace Kartenspiel
             }
         }
 
-        public void updateView()
+        public void UpdateView()
         {
-            _view.ÚpdateView();
+            _view.UpdateView();
         }
     }
 }
