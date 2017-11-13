@@ -13,7 +13,7 @@ namespace KartenspielWPF
     public partial class Form1 : Form,Kartenspiel.IGameView
     {
         Kartenspiel.GameModel _model;
-
+        
         public Form1(Kartenspiel.GameModel model)
         {
             _model = model;
@@ -44,6 +44,11 @@ namespace KartenspielWPF
         }
 
         private void button1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button2_Click(object sender, EventArgs e)
         {
 
         }
