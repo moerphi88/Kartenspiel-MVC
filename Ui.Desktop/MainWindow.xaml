@@ -8,6 +8,6 @@
         DataContext="{Binding Main, Source={StaticResource Locator}}" 
         Title="{Binding WindowTitle, Mode=OneWay}">
     <Grid>
-        
+        <ProgressBar Value="{Binding Progress}"></ProgressBar>
     </Grid>
 </Window>

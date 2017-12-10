@@ -1,4 +1,6 @@
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Threading;
+using System.Threading.Tasks;
 
 namespace Logic.Ui
 {
@@ -24,13 +26,30 @@ namespace Logic.Ui
             if (IsInDesignMode)
             {
                 WindowTitle = "MvvmSample (Design)";
+                Progress = 30;
             }
             else
             {
+                DispatcherHelper.Initialize();
                 WindowTitle = "MvvmSample";
+                Task.Run(
+                    () =>
+                    {
+                        Task.Delay(2000).ContinueWith(
+                                    t =>
+                                    {
+                                        while (Progress < 100)
+                                        {
+                                            DispatcherHelper.RunAsync(() => Progress += 5);
+                                            Task.Delay(500).Wait();
+                                        }
+                                    });
+                    });
+                
             }
         }
 
         public string WindowTitle { get; private set; }
+        public int Progress { get; set; }
     }
 }
