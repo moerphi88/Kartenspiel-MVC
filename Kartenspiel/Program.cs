@@ -18,6 +18,7 @@ namespace Kartenspiel
     }
 
     enum Farbe { Herz, Karo, Pik, Kreuz };
+
     enum Wert { Sieben, Acht, Neun, Zehn, Bauer, Dame, Koenig, As };
 
 
