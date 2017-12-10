@@ -1,6 +1,6 @@
 using GalaSoft.MvvmLight;
 
-namespace Ui.Desktop.ViewModel
+namespace Logic.Ui
 {
     /// <summary>
     /// This class contains properties that the main View can data bind to.
@@ -21,14 +21,16 @@ namespace Ui.Desktop.ViewModel
         /// </summary>
         public MainViewModel()
         {
-            ////if (IsInDesignMode)
-            ////{
-            ////    // Code runs in Blend --> create design time data.
-            ////}
-            ////else
-            ////{
-            ////    // Code runs "for real"
-            ////}
+            if (IsInDesignMode)
+            {
+                WindowTitle = "MvvmSample (Design)";
+            }
+            else
+            {
+                WindowTitle = "MvvmSample";
+            }
         }
+
+        public string WindowTitle { get; private set; }
     }
 }
