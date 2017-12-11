@@ -33,10 +33,12 @@ namespace Logic.Ui {
             if (ViewModelBase.IsInDesignModeStatic)
             {
                 // create design time view services and models
+                SimpleIoc.Default.Register<IDataService, DataService>();
             }
             else
             {
                 // create run time view services and models
+                SimpleIoc.Default.Register<IDataService, DataService>();
             }
 
             SimpleIoc.Default.Register<MainViewModel>();

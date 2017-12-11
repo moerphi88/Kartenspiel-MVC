@@ -7,7 +7,29 @@
         mc:Ignorable="d" Height="350" Width="525"
         DataContext="{Binding Main, Source={StaticResource Locator}}" 
         Title="{Binding WindowTitle, Mode=OneWay}">
-    <Grid>
-        <ProgressBar Value="{Binding Progress}"></ProgressBar>
+    <Grid RenderTransformOrigin="0.5,0.5">
+        <Grid.RenderTransform>
+            <TransformGroup>
+                <ScaleTransform/>
+                <SkewTransform/>
+                <RotateTransform Angle="0.131"/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </Grid.RenderTransform>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="299" Margin="10,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="235"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="299" Margin="250,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="257"/>
+        <Label Content="Spieler 1 Name:" HorizontalAlignment="Left" Margin="38,36,0,0" VerticalAlignment="Top" Width="91"/>
+        <Label Content="Handkarte 1:" HorizontalAlignment="Left" Margin="38,87,0,0" VerticalAlignment="Top"/>
+        <Label Content="Handkarte 2:" HorizontalAlignment="Left" Margin="38,118,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding NameSpieler1, Mode=OneWay}" HorizontalAlignment="Left" Margin="134,36,0,0" VerticalAlignment="Top" Width="91"/>
+        <Label Content="{Binding HandKarteEinsSpieler1}" HorizontalAlignment="Left" Margin="134,87,0,0" VerticalAlignment="Top" Width="91"/>
+        <Label Content="{Binding HandKarteEinsSpieler2}" HorizontalAlignment="Left" Margin="134,118,0,0" VerticalAlignment="Top" Width="91"/>
+        <Label Content="Spieler 1 Name:" HorizontalAlignment="Left" Margin="284,36,0,0" VerticalAlignment="Top" Width="91"/>
+        <Label Content="Handkarte 1:" HorizontalAlignment="Left" Margin="284,87,0,0" VerticalAlignment="Top"/>
+        <Label Content="Handkarte 2:" HorizontalAlignment="Left" Margin="284,118,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding NameSpieler2, Mode=OneWay}" HorizontalAlignment="Left" Margin="380,36,0,0" VerticalAlignment="Top" Width="91"/>
+        <Label Content="{Binding HandKarteZweiSpieler1}" HorizontalAlignment="Left" Margin="380,87,0,0" VerticalAlignment="Top" Width="91"/>
+        <Label Content="{Binding HandKarteZweiSpieler2}" HorizontalAlignment="Left" Margin="380,118,0,0" VerticalAlignment="Top" Width="91"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="329,239,0,0" VerticalAlignment="Top" Width="75" Command="{Binding SetSomeDateCommand, Mode=OneWay}"/>
     </Grid>
 </Window>

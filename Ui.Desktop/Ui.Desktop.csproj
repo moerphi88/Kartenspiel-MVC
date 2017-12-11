@@ -116,6 +116,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Kartenspiel\Kartenspiel.csproj">
+      <Project>{2e332eb0-82a3-435e-bea3-454d6bfef5a7}</Project>
+      <Name>Kartenspiel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Logic.UI\Logic.UI.csproj">
       <Project>{ff24032d-9adf-4d38-9e47-ce906cc93112}</Project>
       <Name>Logic.UI</Name>

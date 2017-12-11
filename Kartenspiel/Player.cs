@@ -54,5 +54,15 @@ namespace Kartenspiel
            return _name + " deine Hand:" + System.Environment.NewLine + "Karte 1: " +c1.ToString() + System.Environment.NewLine + "Karte 2: " + c2.ToString() + System.Environment.NewLine;
         }
 
+        public Card ReturnFirstHandCard()
+        {
+            return c1;
+        }
+
+        public Card ReturnSecondHandCard()
+        {
+            return c2;
+        }
+
     }
 }
