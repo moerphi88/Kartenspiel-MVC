@@ -24,6 +24,7 @@
             Zahl = Wert.Acht.ToString();
         }
 
+        //Was genau macht man? Benutzt man die Properties oder benutzt man die Variablen?
         public Card(string name, string zahl) {
             Name = name;
             Zahl = zahl;

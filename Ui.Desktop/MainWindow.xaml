@@ -23,12 +23,12 @@
         <Label Content="Handkarte 2:" HorizontalAlignment="Left" Margin="38,118,0,0" VerticalAlignment="Top"/>
         <Label Content="{Binding NameSpieler1, Mode=OneWay}" HorizontalAlignment="Left" Margin="134,36,0,0" VerticalAlignment="Top" Width="91"/>
         <Label Content="{Binding HandKarteEinsSpieler1}" HorizontalAlignment="Left" Margin="134,87,0,0" VerticalAlignment="Top" Width="91"/>
-        <Label Content="{Binding HandKarteEinsSpieler2}" HorizontalAlignment="Left" Margin="134,118,0,0" VerticalAlignment="Top" Width="91"/>
+        <Label Content="{Binding HandKarteZweiSpieler1}" HorizontalAlignment="Left" Margin="134,118,0,0" VerticalAlignment="Top" Width="91"/>
         <Label Content="Spieler 1 Name:" HorizontalAlignment="Left" Margin="284,36,0,0" VerticalAlignment="Top" Width="91"/>
         <Label Content="Handkarte 1:" HorizontalAlignment="Left" Margin="284,87,0,0" VerticalAlignment="Top"/>
         <Label Content="Handkarte 2:" HorizontalAlignment="Left" Margin="284,118,0,0" VerticalAlignment="Top"/>
         <Label Content="{Binding NameSpieler2, Mode=OneWay}" HorizontalAlignment="Left" Margin="380,36,0,0" VerticalAlignment="Top" Width="91"/>
-        <Label Content="{Binding HandKarteZweiSpieler1}" HorizontalAlignment="Left" Margin="380,87,0,0" VerticalAlignment="Top" Width="91"/>
+        <Label Content="{Binding HandKarteEinsSpieler2}" HorizontalAlignment="Left" Margin="380,87,0,0" VerticalAlignment="Top" Width="91"/>
         <Label Content="{Binding HandKarteZweiSpieler2}" HorizontalAlignment="Left" Margin="380,118,0,0" VerticalAlignment="Top" Width="91"/>
         <Button Content="Button" HorizontalAlignment="Left" Margin="329,239,0,0" VerticalAlignment="Top" Width="75" Command="{Binding SetSomeDateCommand, Mode=OneWay}"/>
     </Grid>

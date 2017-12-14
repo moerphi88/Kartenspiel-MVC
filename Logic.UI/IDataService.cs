@@ -14,13 +14,14 @@
 
 
 using Kartenspiel;
+using System.Collections.Generic;
 
 namespace Logic.Ui
 {
     public interface IDataService
     {
         void startGame();
-        Player ReturnPlayerOne();
-        Player ReturnPlayerTwo();
+        List<Player> ReturnPlayer();
+        void MakeMove();
     }
 }

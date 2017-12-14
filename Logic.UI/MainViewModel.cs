@@ -26,6 +26,7 @@ namespace Logic.Ui
         {
 
             _dataService = dataService;
+
             if (IsInDesignMode)
             {
                 WindowTitle = "Kartenspiel (Design)";
@@ -35,10 +36,6 @@ namespace Logic.Ui
                 HandKarteZweiSpieler1 = "Karo Ass";
                 HandKarteEinsSpieler2 = "Kreuz Ass";
                 HandKarteZweiSpieler2 = "Pik Ass";
-                //SetSomeDateCommand = new RelayCommand(() =>
-                //{
-                //    System.Console.WriteLine("Hallo");
-                //});
             }
             else
             {
@@ -49,7 +46,7 @@ namespace Logic.Ui
                 SetSomeDateCommand = new RelayCommand(() =>
                 {
                     System.Console.WriteLine("Hallo");
-                    _dataService.startGame();
+                    _dataService.MakeMove();
                     UpdateVM();
                 });
             }
@@ -57,8 +54,8 @@ namespace Logic.Ui
 
         private void UpdateVM()
         {
-            List<Card> handCardsPlayerOne = _dataService.ReturnPlayerOne().ReturnHandCards();
-            List<Card> handCardsPlayerTwo = _dataService.ReturnPlayerTwo().ReturnHandCards();
+            List<Card> handCardsPlayerOne = _dataService.ReturnPlayer()[0].ReturnHandCards();
+            List<Card> handCardsPlayerTwo = _dataService.ReturnPlayer()[1].ReturnHandCards();
             HandKarteEinsSpieler1 = handCardsPlayerOne[0].ToString();
             HandKarteZweiSpieler1 = handCardsPlayerOne[1].ToString();
             HandKarteEinsSpieler2 = handCardsPlayerTwo[0].ToString();
