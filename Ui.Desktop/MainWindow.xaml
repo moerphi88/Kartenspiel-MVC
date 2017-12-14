@@ -30,7 +30,9 @@
         <Label Content="{Binding NameSpieler2, Mode=OneWay}" HorizontalAlignment="Left" Margin="380,36,0,0" VerticalAlignment="Top" Width="91"/>
         <Label Content="{Binding HandKarteEinsSpieler2}" HorizontalAlignment="Left" Margin="380,87,0,0" VerticalAlignment="Top" Width="91"/>
         <Label Content="{Binding HandKarteZweiSpieler2}" HorizontalAlignment="Left" Margin="380,118,0,0" VerticalAlignment="Top" Width="91"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="329,239,0,0" VerticalAlignment="Top" Width="75" CommandParameter="{Binding ElementName=InputString, Path=Text}" Command="{Binding SetSomeDateCommand, Mode=OneWay}"/>
-        <TextBox Name="InputString" HorizontalAlignment="Left" Height="23" Margin="88,239,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <Button Content="MakeMove" HorizontalAlignment="Left" Margin="329,239,0,0" VerticalAlignment="Top" Width="75" CommandParameter="{Binding ElementName=InputString, Path=Text}" Command="{Binding MakeMoveCommand, Mode=OneWay}" IsEnabled="{Binding CanMakeMove}"/>
+        <TextBox Name="InputString" HorizontalAlignment="Left" Height="23" Margin="88,239,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="120"/>
+        <Label HorizontalAlignment="Left" Margin="120,130,0,0" VerticalAlignment="Top" Width="272" Height="95" FontSize="72" Content="Winner" Visibility="{Binding IsWinner}" IsEnabled="{Binding IsWinner}"/>
+        <Button Content="StartGame" HorizontalAlignment="Left" Margin="329,275,0,0" VerticalAlignment="Top" Width="75" Command="{Binding StartGameCommand, Mode=OneWay}" Visibility="{Binding IsWinner}" IsEnabled="{Binding IsWinner}"/>
     </Grid>
 </Window>

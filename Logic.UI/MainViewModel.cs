@@ -36,6 +36,8 @@ namespace Logic.Ui
                 HandKarteZweiSpieler1 = "Karo Ass";
                 HandKarteEinsSpieler2 = "Kreuz Ass";
                 HandKarteZweiSpieler2 = "Pik Ass";
+                CanMakeMove = true;
+                IsWinner = false;
             }
             else
             {
@@ -43,12 +45,33 @@ namespace Logic.Ui
                 NameSpieler1 = "Hans";
                 NameSpieler2 = "Hussein";
                 WindowTitle = "Kartenspiel";
-                SetSomeDateCommand = new RelayCommand<string>((s) =>
+                CanMakeMove = true;
+                IsWinner = false;
+                MakeMoveCommand = new RelayCommand<string>((s) =>
                 {
                     int i;
-                    int.TryParse(s,out i);
-                    System.Console.WriteLine(s);                    
-                    _dataService.MakeMove(i);
+                    int.TryParse(s, out i); //Die Eingabe des Textfeldes wird in ein Int geparsed. Hier muss noch eine Fehlerbehandlung hin. Außerdem muss sichergestellt werden, dass nur 1 oder 2 eingegeben werden.
+                    System.Console.WriteLine(s);
+                    var gameStatus = _dataService.MakeMove(i);
+                    switch (gameStatus) {
+                        case GameStatus.Success:
+                            UpdateVM();
+                            break;
+                        case GameStatus.Winner:
+                            UpdateVM();
+                            IsWinner = true;
+                            CanMakeMove = false;
+                            break;
+                        case GameStatus.GameOver:
+                            CanMakeMove = false;
+                            break;
+                    }
+                });
+                StartGameCommand = new RelayCommand(() =>
+                {
+                    IsWinner = false;
+                    CanMakeMove = true;
+                    _dataService.startGame();
                     UpdateVM();
                 });
             }
@@ -72,10 +95,13 @@ namespace Logic.Ui
         public string HandKarteZweiSpieler1 { get; set; }
         public string HandKarteEinsSpieler2 { get; set; }
         public string HandKarteZweiSpieler2 { get; set; }
+        public bool CanMakeMove { get; set; }
+        public bool IsWinner { get; set; }
 
-        public RelayCommand<string> SetSomeDateCommand { get; }
+        public RelayCommand<string> MakeMoveCommand { get; }
+        public RelayCommand StartGameCommand { get; }
 
-        
+
 
     }
 }

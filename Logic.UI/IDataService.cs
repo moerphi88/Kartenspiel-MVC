@@ -18,10 +18,12 @@ using System.Collections.Generic;
 
 namespace Logic.Ui
 {
+    public enum GameStatus {Success, GameOver, Winner};
+
     public interface IDataService
     {
         void startGame();
         List<Player> ReturnPlayer();
-        void MakeMove(int i);
+        GameStatus MakeMove(int i);
     }
 }
