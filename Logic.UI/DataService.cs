@@ -18,19 +18,23 @@ namespace Logic.Ui
 {
     public class DataService : IDataService
     {
+        public Player p1 = new Player("Hussein", new Card(), new Card());
+        public Player p2 = new Player("Hans", new Card(), new Card());
+
         public Player ReturnPlayerOne()
         {
-            return new Player("Hussein", new Card(), new Card());
+            return p1;
         }
 
         public Player ReturnPlayerTwo()
         {
-            return new Player("Hans", new Card(), new Card());
+            return p2;
         }
 
         public void startGame()
         {
-            throw new System.NotImplementedException();
+            p1.MakeMove(1, new Card("Herz", "Ass"));
+            p2.MakeMove(2, new Card("Kreuz", "Neun"));
         }
     }
 }

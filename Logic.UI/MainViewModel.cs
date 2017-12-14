@@ -1,5 +1,7 @@
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using Kartenspiel;
+using System.Collections.Generic;
 
 namespace Logic.Ui
 {
@@ -40,23 +42,27 @@ namespace Logic.Ui
             }
             else
             {
+                UpdateVM();
                 NameSpieler1 = "Hans";
                 NameSpieler2 = "Hussein";
                 WindowTitle = "Kartenspiel";
                 SetSomeDateCommand = new RelayCommand(() =>
                 {
                     System.Console.WriteLine("Hallo");
-                    PasseKartenNamenAn();
+                    _dataService.startGame();
+                    UpdateVM();
                 });
             }
         }
 
-        private void PasseKartenNamenAn()
+        private void UpdateVM()
         {
-            HandKarteEinsSpieler1 = _dataService.ReturnPlayerOne().ReturnFirstHandCard().ToString();
-            HandKarteZweiSpieler1 = _dataService.ReturnPlayerOne().ReturnSecondHandCard().ToString();
-            HandKarteEinsSpieler2 = _dataService.ReturnPlayerTwo().ReturnFirstHandCard().ToString();
-            HandKarteZweiSpieler2 = _dataService.ReturnPlayerTwo().ReturnSecondHandCard().ToString();
+            List<Card> handCardsPlayerOne = _dataService.ReturnPlayerOne().ReturnHandCards();
+            List<Card> handCardsPlayerTwo = _dataService.ReturnPlayerTwo().ReturnHandCards();
+            HandKarteEinsSpieler1 = handCardsPlayerOne[0].ToString();
+            HandKarteZweiSpieler1 = handCardsPlayerOne[1].ToString();
+            HandKarteEinsSpieler2 = handCardsPlayerTwo[0].ToString();
+            HandKarteZweiSpieler2 = handCardsPlayerTwo[1].ToString();
         }
 
         private IDataService _dataService;
