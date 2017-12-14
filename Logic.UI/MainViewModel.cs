@@ -42,16 +42,14 @@ namespace Logic.Ui
             else
             {
                 UpdateVM();
-                NameSpieler1 = "Hans";
-                NameSpieler2 = "Hussein";
-                WindowTitle = "Kartenspiel";
-                CanMakeMove = true;
-                IsWinner = false;
+
+                InitialisiereVM();
+
                 MakeMoveCommand = new RelayCommand<string>((s) =>
                 {
                     int i;
                     int.TryParse(s, out i); //Die Eingabe des Textfeldes wird in ein Int geparsed. Hier muss noch eine Fehlerbehandlung hin. Außerdem muss sichergestellt werden, dass nur 1 oder 2 eingegeben werden.
-                    System.Console.WriteLine(s);
+
                     var gameStatus = _dataService.MakeMove(i);
                     switch (gameStatus) {
                         case GameStatus.Success:
@@ -67,14 +65,22 @@ namespace Logic.Ui
                             break;
                     }
                 });
+
                 StartGameCommand = new RelayCommand(() =>
                 {
-                    IsWinner = false;
-                    CanMakeMove = true;
+                    InitialisiereVM();
                     _dataService.startGame();
                     UpdateVM();
                 });
             }
+        }
+        private void InitialisiereVM()
+        {
+            NameSpieler1 = "Hans";
+            NameSpieler2 = "Hussein";
+            WindowTitle = "Kartenspiel";
+            CanMakeMove = true;
+            IsWinner = false;
         }
 
         private void UpdateVM()
