@@ -34,18 +34,18 @@ namespace Logic.Ui
             listOfPlayers.Add(new Player("Hans", cardDeck.GetFirstCard(), cardDeck.GetFirstCard()));
         }
 
-        public void MakeMove()
+        public void MakeMove(int usersChoice)
         {
             try
             {
                 switch (activePlayer)
                 {
                     case 1:
-                        listOfPlayers[0].ChangeHandCard(1, cardDeck.GetFirstCard());
+                        listOfPlayers[0].ChangeHandCard(usersChoice, cardDeck.GetFirstCard());
                         ToggleActivePlayer();
                         break;
                     case 2:
-                        listOfPlayers[1].ChangeHandCard(1, cardDeck.GetFirstCard());
+                        listOfPlayers[1].ChangeHandCard(usersChoice, cardDeck.GetFirstCard());
                         ToggleActivePlayer();
                         break;
                 }

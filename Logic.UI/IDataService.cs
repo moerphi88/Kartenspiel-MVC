@@ -22,6 +22,6 @@ namespace Logic.Ui
     {
         void startGame();
         List<Player> ReturnPlayer();
-        void MakeMove();
+        void MakeMove(int i);
     }
 }

@@ -43,10 +43,12 @@ namespace Logic.Ui
                 NameSpieler1 = "Hans";
                 NameSpieler2 = "Hussein";
                 WindowTitle = "Kartenspiel";
-                SetSomeDateCommand = new RelayCommand(() =>
+                SetSomeDateCommand = new RelayCommand<string>((s) =>
                 {
-                    System.Console.WriteLine("Hallo");
-                    _dataService.MakeMove();
+                    int i;
+                    int.TryParse(s,out i);
+                    System.Console.WriteLine(s);                    
+                    _dataService.MakeMove(i);
                     UpdateVM();
                 });
             }
@@ -71,7 +73,7 @@ namespace Logic.Ui
         public string HandKarteEinsSpieler2 { get; set; }
         public string HandKarteZweiSpieler2 { get; set; }
 
-        public RelayCommand SetSomeDateCommand { get; }
+        public RelayCommand<string> SetSomeDateCommand { get; }
 
         
 
