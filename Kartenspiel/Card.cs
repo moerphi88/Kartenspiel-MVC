@@ -32,7 +32,7 @@
 
         public override string ToString()
         {
-            return Name + " " + Zahl;
+            return Name + "" + Zahl;
         }
     }
 }

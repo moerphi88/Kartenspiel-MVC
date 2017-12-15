@@ -1,6 +1,7 @@
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using Kartenspiel;
+using System;
 using System.Collections.Generic;
 
 namespace Logic.Ui
@@ -38,6 +39,11 @@ namespace Logic.Ui
                 HandKarteZweiSpieler2 = "Pik Ass";
                 CanMakeMove = true;
                 IsWinner = false;
+
+                HandKarteEinsSpieler1 = "~/../../Images/KreuzAcht.png";
+                HandKarteZweiSpieler1 = "~/../../Images/KreuzNeun.png";
+                HandKarteEinsSpieler2 = "~/../../Images/KreuzSieben.png";
+                HandKarteZweiSpieler2 = "~/../../Images/KreuzZehn.png";
             }
             else
             {
@@ -62,6 +68,7 @@ namespace Logic.Ui
                             break;
                         case GameStatus.GameOver:
                             CanMakeMove = false;
+                            IsWinner = true;
                             break;
                     }
                 });
@@ -87,10 +94,11 @@ namespace Logic.Ui
         {
             List<Card> handCardsPlayerOne = _dataService.ReturnPlayer()[0].ReturnHandCards();
             List<Card> handCardsPlayerTwo = _dataService.ReturnPlayer()[1].ReturnHandCards();
-            HandKarteEinsSpieler1 = handCardsPlayerOne[0].ToString();
-            HandKarteZweiSpieler1 = handCardsPlayerOne[1].ToString();
-            HandKarteEinsSpieler2 = handCardsPlayerTwo[0].ToString();
-            HandKarteZweiSpieler2 = handCardsPlayerTwo[1].ToString();
+            HandKarteEinsSpieler1 = "~/../../Images/" + handCardsPlayerOne[0].ToString() + ".png";
+            HandKarteZweiSpieler1 = "~/../../Images/" + handCardsPlayerOne[1].ToString() + ".png";
+            HandKarteEinsSpieler2 = "~/../../Images/" + handCardsPlayerTwo[0].ToString() + ".png";
+            HandKarteZweiSpieler2 = "~/../../Images/" + handCardsPlayerTwo[1].ToString() + ".png";
+
         }
 
         private IDataService _dataService;
@@ -103,6 +111,8 @@ namespace Logic.Ui
         public string HandKarteZweiSpieler2 { get; set; }
         public bool CanMakeMove { get; set; }
         public bool IsWinner { get; set; }
+
+        public string ImageSourcePath { get; set; }
 
         public RelayCommand<string> MakeMoveCommand { get; }
         public RelayCommand StartGameCommand { get; }

@@ -11,6 +11,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ui.Desktop", "Ui.Desktop\Ui
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic.UI", "Logic.UI\Logic.UI.csproj", "{FF24032D-9ADF-4D38-9E47-CE906CC93112}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{DCC32C23-7428-4358-87AE-6C4198BB2CD5}"
+	ProjectSection(SolutionItems) = preProject
+		Images\1367_k.jpg = Images\1367_k.jpg
+		..\..\..\..\Pictures\BIlderKartenspiel\KreuzAcht.png = ..\..\..\..\Pictures\BIlderKartenspiel\KreuzAcht.png
+		..\..\..\..\Pictures\BIlderKartenspiel\KreuzNeun.png = ..\..\..\..\Pictures\BIlderKartenspiel\KreuzNeun.png
+		..\..\..\..\Pictures\BIlderKartenspiel\KreuzSieben.png = ..\..\..\..\Pictures\BIlderKartenspiel\KreuzSieben.png
+		..\..\..\..\Pictures\BIlderKartenspiel\KreuzZehn.png = ..\..\..\..\Pictures\BIlderKartenspiel\KreuzZehn.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

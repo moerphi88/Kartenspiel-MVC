@@ -4,10 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ui.Desktop"
-        mc:Ignorable="d" Height="350" Width="525"
+        mc:Ignorable="d" Height="385" Width="536"
         DataContext="{Binding Main, Source={StaticResource Locator}}" 
         Title="{Binding WindowTitle, Mode=OneWay}">
-    <Grid RenderTransformOrigin="0.5,0.5">
+    <Grid RenderTransformOrigin="0.5,0.5" Margin="0,0,3,2">
         <Grid.RenderTransform>
             <TransformGroup>
                 <ScaleTransform/>
@@ -16,23 +16,19 @@
                 <TranslateTransform/>
             </TransformGroup>
         </Grid.RenderTransform>
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="299" Margin="10,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="235"/>
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="299" Margin="250,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="257"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="250" Margin="10,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="250"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="250" Margin="266,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="250"/>
         <Label Content="Spieler 1 Name:" HorizontalAlignment="Left" Margin="38,36,0,0" VerticalAlignment="Top" Width="91"/>
-        <Label Content="Handkarte 1:" HorizontalAlignment="Left" Margin="38,87,0,0" VerticalAlignment="Top"/>
-        <Label Content="Handkarte 2:" HorizontalAlignment="Left" Margin="38,118,0,0" VerticalAlignment="Top"/>
         <Label Content="{Binding NameSpieler1, Mode=OneWay}" HorizontalAlignment="Left" Margin="134,36,0,0" VerticalAlignment="Top" Width="91"/>
-        <Label Content="{Binding HandKarteEinsSpieler1}" HorizontalAlignment="Left" Margin="134,87,0,0" VerticalAlignment="Top" Width="91"/>
-        <Label Content="{Binding HandKarteZweiSpieler1}" HorizontalAlignment="Left" Margin="134,118,0,0" VerticalAlignment="Top" Width="91"/>
         <Label Content="Spieler 1 Name:" HorizontalAlignment="Left" Margin="284,36,0,0" VerticalAlignment="Top" Width="91"/>
-        <Label Content="Handkarte 1:" HorizontalAlignment="Left" Margin="284,87,0,0" VerticalAlignment="Top"/>
-        <Label Content="Handkarte 2:" HorizontalAlignment="Left" Margin="284,118,0,0" VerticalAlignment="Top"/>
         <Label Content="{Binding NameSpieler2, Mode=OneWay}" HorizontalAlignment="Left" Margin="380,36,0,0" VerticalAlignment="Top" Width="91"/>
-        <Label Content="{Binding HandKarteEinsSpieler2}" HorizontalAlignment="Left" Margin="380,87,0,0" VerticalAlignment="Top" Width="91"/>
-        <Label Content="{Binding HandKarteZweiSpieler2}" HorizontalAlignment="Left" Margin="380,118,0,0" VerticalAlignment="Top" Width="91"/>
-        <Button Content="MakeMove" HorizontalAlignment="Left" Margin="329,239,0,0" VerticalAlignment="Top" Width="75" CommandParameter="{Binding ElementName=InputString, Path=Text}" Command="{Binding MakeMoveCommand, Mode=OneWay}" IsEnabled="{Binding CanMakeMove}"/>
-        <TextBox Name="InputString" HorizontalAlignment="Left" Height="23" Margin="88,239,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="120"/>
-        <Label HorizontalAlignment="Left" Margin="120,130,0,0" VerticalAlignment="Top" Width="272" Height="95" FontSize="72" Content="Winner" Visibility="{Binding IsWinner}" IsEnabled="{Binding IsWinner}"/>
-        <Button Content="StartGame" HorizontalAlignment="Left" Margin="329,275,0,0" VerticalAlignment="Top" Width="75" Command="{Binding StartGameCommand, Mode=OneWay}" Visibility="{Binding IsWinner}" IsEnabled="{Binding IsWinner}"/>
+        <Button Content="MakeMove" HorizontalAlignment="Left" Margin="160,279,0,0" VerticalAlignment="Top" Width="75" CommandParameter="{Binding ElementName=InputString, Path=Text}" Command="{Binding MakeMoveCommand, Mode=OneWay}" IsEnabled="{Binding CanMakeMove}"/>
+        <TextBox Name="InputString" HorizontalAlignment="Left" Height="23" Margin="258,312,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="120"/>
+        <Button Content="StartGame" HorizontalAlignment="Left" Margin="160,315,0,0" VerticalAlignment="Top" Width="75" Command="{Binding StartGameCommand, Mode=OneWay}" Visibility="{Binding IsWinner}" IsEnabled="{Binding IsWinner}"/>
+        <Image HorizontalAlignment="Left" Height="150" Margin="29,88,0,0" VerticalAlignment="Top" Width="100" Source="{Binding HandKarteEinsSpieler1}" RenderTransformOrigin="0.018,0.545"/>
+        <Image HorizontalAlignment="Left" Height="150" Margin="144,88,0,0" VerticalAlignment="Top" Width="100" Source="{Binding HandKarteZweiSpieler1}" RenderTransformOrigin="0.018,0.545"/>
+        <Image HorizontalAlignment="Left" Height="150" Margin="284,88,0,0" VerticalAlignment="Top" Width="100" Source="{Binding HandKarteEinsSpieler2}" RenderTransformOrigin="0.018,0.545"/>
+        <Image HorizontalAlignment="Left" Height="150" Margin="399,88,0,0" VerticalAlignment="Top" Width="100" Source="{Binding HandKarteZweiSpieler2}" RenderTransformOrigin="0.018,0.545"/>
+        <Button Content="Button" HorizontalAlignment="Left" Height="150" Margin="29,88,0,0" VerticalAlignment="Top" Width="100" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}"/>
     </Grid>
 </Window>
