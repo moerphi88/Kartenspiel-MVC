@@ -3,10 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Converters="clr-namespace:Logic.Ui;assembly=Kartenspiel.Logic.Ui"
         xmlns:local="clr-namespace:Ui.Desktop"
         mc:Ignorable="d" Height="385" Width="536"
         DataContext="{Binding Main, Source={StaticResource Locator}}" 
         Title="{Binding WindowTitle, Mode=OneWay}">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </Window.Resources>
     <Grid RenderTransformOrigin="0.5,0.5" Margin="0,0,3,2">
         <Grid.RenderTransform>
             <TransformGroup>
@@ -16,7 +20,7 @@
                 <TranslateTransform/>
             </TransformGroup>
         </Grid.RenderTransform>
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="250" Margin="10,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="250"/>
+        <Rectangle HorizontalAlignment="Left" Height="250" Margin="10,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="250"/>
         <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="250" Margin="266,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="250"/>
         <Label Content="Spieler 1 Name:" HorizontalAlignment="Left" Margin="38,36,0,0" VerticalAlignment="Top" Width="91"/>
         <Label Content="{Binding NameSpieler1, Mode=OneWay}" HorizontalAlignment="Left" Margin="134,36,0,0" VerticalAlignment="Top" Width="91"/>

@@ -39,8 +39,10 @@ namespace Logic.Ui
                 HandKarteZweiSpieler2 = "Pik Ass";
                 CanMakeMove = true;
                 IsWinner = false;
+                PlayerOneIsActive = true;
+                PlayerTwoIsActive = false;
 
-                HandKarteEinsSpieler1 = "~/../../Images/herzzehn.png";
+        HandKarteEinsSpieler1 = "~/../../Images/herzzehn.png";
                 HandKarteZweiSpieler1 = "~/../../Images/KreuzNeun.png";
                 HandKarteEinsSpieler2 = "~/../../Images/KreuzSieben.png";
                 HandKarteZweiSpieler2 = "~/../../Images/PikBube.png";
@@ -96,19 +98,25 @@ namespace Logic.Ui
         private void DetermineActivePlayer()
         {
             int activePlayer = _dataService.GetActivePlayer();
-            switch (activePlayer)
+            if (CanMakeMove)
             {
-                case 1:
-                    if (CanMakeMove) PlayerOneIsActive = true;
-                    else PlayerOneIsActive = false;
-                    PlayerTwoIsActive = !PlayerOneIsActive;
-                    break;
-                case 2:
-                    if (CanMakeMove) PlayerTwoIsActive = true;
-                    else PlayerTwoIsActive = false;
-                    PlayerOneIsActive = !PlayerTwoIsActive;
-                    break;
+                switch (activePlayer)
+                {
+                    case 1:
+                        PlayerOneIsActive = true;
+                        PlayerTwoIsActive = false;
+                        break;
+                    case 2:
+                        PlayerOneIsActive = false;
+                        PlayerTwoIsActive = true;
+                        break;
+                }
             }
+            else
+            {
+                PlayerOneIsActive = false;
+                PlayerTwoIsActive = false;
+            }            
         }
 
         private void UpdateVM()
