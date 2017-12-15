@@ -34,6 +34,11 @@ namespace Logic.Ui
             listOfPlayers.Add(new Player("Hans", cardDeck.GetFirstCard(), cardDeck.GetFirstCard()));
         }
 
+        public int GetActivePlayer()
+        {
+            return activePlayer;
+        }
+
         public GameStatus MakeMove(int usersChoice)
         {
             try

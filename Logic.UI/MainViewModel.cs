@@ -40,10 +40,10 @@ namespace Logic.Ui
                 CanMakeMove = true;
                 IsWinner = false;
 
-                HandKarteEinsSpieler1 = "~/../../Images/KreuzAcht.png";
+                HandKarteEinsSpieler1 = "~/../../Images/herzzehn.png";
                 HandKarteZweiSpieler1 = "~/../../Images/KreuzNeun.png";
                 HandKarteEinsSpieler2 = "~/../../Images/KreuzSieben.png";
-                HandKarteZweiSpieler2 = "~/../../Images/KreuzZehn.png";
+                HandKarteZweiSpieler2 = "~/../../Images/PikBube.png";
             }
             else
             {
@@ -63,14 +63,15 @@ namespace Logic.Ui
                             break;
                         case GameStatus.Winner:
                             UpdateVM();
-                            IsWinner = true;
                             CanMakeMove = false;
+                            IsWinner = true;
                             break;
                         case GameStatus.GameOver:
                             CanMakeMove = false;
                             IsWinner = true;
                             break;
                     }
+                    DetermineActivePlayer();
                 });
 
                 StartGameCommand = new RelayCommand(() =>
@@ -88,16 +89,36 @@ namespace Logic.Ui
             WindowTitle = "Kartenspiel";
             CanMakeMove = true;
             IsWinner = false;
+            PlayerOneIsActive = _dataService.GetActivePlayer() != 1 ? false : true;
+            PlayerTwoIsActive = !PlayerOneIsActive;
+        }
+
+        private void DetermineActivePlayer()
+        {
+            int activePlayer = _dataService.GetActivePlayer();
+            switch (activePlayer)
+            {
+                case 1:
+                    if (CanMakeMove) PlayerOneIsActive = true;
+                    else PlayerOneIsActive = false;
+                    PlayerTwoIsActive = !PlayerOneIsActive;
+                    break;
+                case 2:
+                    if (CanMakeMove) PlayerTwoIsActive = true;
+                    else PlayerTwoIsActive = false;
+                    PlayerOneIsActive = !PlayerTwoIsActive;
+                    break;
+            }
         }
 
         private void UpdateVM()
         {
             List<Card> handCardsPlayerOne = _dataService.ReturnPlayer()[0].ReturnHandCards();
             List<Card> handCardsPlayerTwo = _dataService.ReturnPlayer()[1].ReturnHandCards();
-            HandKarteEinsSpieler1 = "~/../../Images/" + handCardsPlayerOne[0].ToString() + ".png";
-            HandKarteZweiSpieler1 = "~/../../Images/" + handCardsPlayerOne[1].ToString() + ".png";
-            HandKarteEinsSpieler2 = "~/../../Images/" + handCardsPlayerTwo[0].ToString() + ".png";
-            HandKarteZweiSpieler2 = "~/../../Images/" + handCardsPlayerTwo[1].ToString() + ".png";
+            HandKarteEinsSpieler1 = "C:/Users/Johannes/Documents/Visual Studio 2017/Projects/Kartenspiel-MVC/Images/" + handCardsPlayerOne[0].ToString() + ".png";
+            HandKarteZweiSpieler1 = "C:/Users/Johannes/Documents/Visual Studio 2017/Projects/Kartenspiel-MVC/Images/" + handCardsPlayerOne[1].ToString() + ".png";
+            HandKarteEinsSpieler2 = "C:/Users/Johannes/Documents/Visual Studio 2017/Projects/Kartenspiel-MVC/Images/" + handCardsPlayerTwo[0].ToString() + ".png";
+            HandKarteZweiSpieler2 = "C:/Users/Johannes/Documents/Visual Studio 2017/Projects/Kartenspiel-MVC/Images/" + handCardsPlayerTwo[1].ToString() + ".png";
 
         }
 
@@ -111,8 +132,8 @@ namespace Logic.Ui
         public string HandKarteZweiSpieler2 { get; set; }
         public bool CanMakeMove { get; set; }
         public bool IsWinner { get; set; }
-
-        public string ImageSourcePath { get; set; }
+        public bool PlayerOneIsActive { get; set; }
+        public bool PlayerTwoIsActive { get; set; }
 
         public RelayCommand<string> MakeMoveCommand { get; }
         public RelayCommand StartGameCommand { get; }

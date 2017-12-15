@@ -14,10 +14,38 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{DCC32C23-7428-4358-87AE-6C4198BB2CD5}"
 	ProjectSection(SolutionItems) = preProject
 		Images\1367_k.jpg = Images\1367_k.jpg
+		Images\HerzAcht.png = Images\HerzAcht.png
+		Images\HerzAs.png = Images\HerzAs.png
+		Images\HerzBube.png = Images\HerzBube.png
+		Images\HerzDame.png = Images\HerzDame.png
+		Images\HerzKoenig.png = Images\HerzKoenig.png
+		Images\HerzNeun.png = Images\HerzNeun.png
+		Images\HerzSieben.png = Images\HerzSieben.png
+		Images\HerzZehn.png = Images\HerzZehn.png
+		Images\KaroAcht.png = Images\KaroAcht.png
+		Images\KaroAs.png = Images\KaroAs.png
+		Images\KaroBube.png = Images\KaroBube.png
+		Images\KaroDame.png = Images\KaroDame.png
+		Images\KaroKoenig.png = Images\KaroKoenig.png
+		Images\KaroNeun.png = Images\KaroNeun.png
+		Images\KaroSieben.png = Images\KaroSieben.png
+		Images\KaroZehn.png = Images\KaroZehn.png
 		..\..\..\..\Pictures\BIlderKartenspiel\KreuzAcht.png = ..\..\..\..\Pictures\BIlderKartenspiel\KreuzAcht.png
+		Images\KreuzAs.png = Images\KreuzAs.png
+		Images\KreuzBube.png = Images\KreuzBube.png
+		Images\KreuzDame.png = Images\KreuzDame.png
+		Images\KreuzKoenig.png = Images\KreuzKoenig.png
 		..\..\..\..\Pictures\BIlderKartenspiel\KreuzNeun.png = ..\..\..\..\Pictures\BIlderKartenspiel\KreuzNeun.png
 		..\..\..\..\Pictures\BIlderKartenspiel\KreuzSieben.png = ..\..\..\..\Pictures\BIlderKartenspiel\KreuzSieben.png
 		..\..\..\..\Pictures\BIlderKartenspiel\KreuzZehn.png = ..\..\..\..\Pictures\BIlderKartenspiel\KreuzZehn.png
+		Images\PikAcht.png = Images\PikAcht.png
+		Images\PikAs.png = Images\PikAs.png
+		Images\PikBube.png = Images\PikBube.png
+		Images\PikDame.png = Images\PikDame.png
+		Images\PikKoenig.png = Images\PikKoenig.png
+		Images\PikNeun.png = Images\PikNeun.png
+		Images\PikSieben.png = Images\PikSieben.png
+		Images\PikZehn.png = Images\PikZehn.png
 	EndProjectSection
 EndProject
 Global

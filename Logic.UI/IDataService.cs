@@ -22,6 +22,7 @@ namespace Logic.Ui
 
     public interface IDataService
     {
+        int GetActivePlayer();
         void startGame();
         List<Player> ReturnPlayer();
         GameStatus MakeMove(int i);
